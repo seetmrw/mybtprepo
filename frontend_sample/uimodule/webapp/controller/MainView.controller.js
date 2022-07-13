@@ -13,8 +13,8 @@ sap.ui.define(
         let oJson = new JSONModel();
         this.getView().setModel(oJson, 'myNode');
         oJson.loadData(
-            // 'http://localhost:8921/files'
-            'https://port-8921-nodejs-billowy-sandwich-seetmrw287880.codeanyapp.com/files'
+            'http://localhost:8921/files'
+            //'https://port-8921-nodejs-billowy-sandwich-seetmrw287880.codeanyapp.com/files'
         ).then(
             function () {
                 debugger;
