@@ -15,7 +15,11 @@ sap.ui.define(
         this.getView().setModel(oJson, 'myNode');
         oJson.loadData(
             'http://localhost:8921/files'
+<<<<<<< HEAD
             // 'https://port-8921-nodejs-billowy-sandwich-seetmrw287880.codeanyapp.com/files'
+=======
+            //'https://port-8921-nodejs-billowy-sandwich-seetmrw287880.codeanyapp.com/files'
+>>>>>>> 21f0245fd00a39f3260a5a9b25a1d2fddf9872d0
         ).then(
             function () {
                 debugger;
