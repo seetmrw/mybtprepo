@@ -1,0 +1,32 @@
+<mvc:View controllerName="gitpg.myapp.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt">
+  <Page id="page" title="{i18n>title}">
+    <content>
+      
+      <Title level="H1" titleStyle='H1' textDirection='RTL' >
+        <Link text="Products Link" href="https://sap.com" target="_blank" />
+      </Title>
+
+      <List width="320px">
+      <ActionListItem id="link1" text="1. create" press='.onPress'/>
+      <ActionListItem id="link2" text="2. css" press='.onPress'/>
+      <ActionListItem id="link3" text="3. filelist" press='.onPress'/>
+      <ActionListItem id="link4" text="4. html" press='.onPress'/>
+      <ActionListItem id="link5" text="5. javascript" press='.onPress'/>
+    </List>
+
+    <HBox id="myExtend">
+      <!-- SCREENS RENDERING HERE -->
+    </HBox>
+
+      <!-- <tnt:NavigationList id="navigationList" width="320px" selectedKey="Files">
+        <tnt:items>
+          <tnt:NavigationListItem id="myListItemHeader" text="myFiles" key="rootItem1" icon="sap-icon://document" items="{myNode>/}">
+            <tnt:items>
+              <tnt:NavigationListItem id="myListItem" text="{myNode>}" />
+            </tnt:items>
+          </tnt:NavigationListItem>
+        </tnt:items>
+      </tnt:NavigationList> -->
+    </content>
+  </Page>
+</mvc:View>

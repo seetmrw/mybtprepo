@@ -1,0 +1,9 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+    <VBox>
+        <Text text='Hello WEB' />
+    </VBox>
+    
+</c:FragmentDefinition>
