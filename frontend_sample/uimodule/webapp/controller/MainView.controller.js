@@ -18,7 +18,7 @@ sap.ui.define(
             //'https://port-8921-nodejs-billowy-sandwich-seetmrw287880.codeanyapp.com/files'
         ).then(
             function () {
-                debugger;
+                //debugger;
             }.bind(this)
         )
         
