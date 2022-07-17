@@ -14,7 +14,7 @@ let app = http.createServer(function (request, response) {
     let sFiltedID = '';
 
     let oCors = {
-        origin: ['http://localhost:8080','https://seetmrw.github.io'],
+        origin: ['http://localhost:8080','https://woongkipark.github.io'],
         header: "Origin, X-Requested-With, Content-Type, Accept"
     };
 
@@ -143,8 +143,21 @@ let app = http.createServer(function (request, response) {
 
     } else if (sPath === '/files') {
         let adirmyfilesList = fs.readdirSync('./myfiles');
+        
         if (adirmyfilesList) {
+            
+            // let sMYjson = `{
+            //     name : 'patkwoongki',
+            //     age  : '34',
+            //     myFavomovie : [
+            //         '영화1',
+            //         '영화2'
+            //     ]
+            // }`
+
             let sFilesList = JSON.stringify(adirmyfilesList);
+
+            // --보안
             let origin = request.headers.origin;
 
             response.setHeader('Content-Type' , 'text/html; charset=utf-8',)
@@ -153,6 +166,7 @@ let app = http.createServer(function (request, response) {
                 response.setHeader('Access-Control-Allow-Origin', origin);
                 response.setHeader('Access-Control-Allow-Headers', oCors.header )
             }
+            // --보안
             response.writeHead(200);
             response.end(sFilesList);
         } else {
