@@ -5,7 +5,7 @@ xmlns:tnt="sap.tnt">
 
     <VBox>
         <Title titleStyle="H2" text="Filelist" />
-                <!-- <tnt:NavigationList
+                <tnt:NavigationList
                     id="navigationList"
                     width="200px"
                     selectedKey="rootItem1">
@@ -14,7 +14,7 @@ xmlns:tnt="sap.tnt">
                         <tnt:NavigationListItem text="file 2" />
                         <tnt:NavigationListItem text="file 3" />
                     </tnt:NavigationListItem>
-                </tnt:NavigationList> -->
+                </tnt:NavigationList>
     </VBox>
 
 </core:FragmentDefinition>
