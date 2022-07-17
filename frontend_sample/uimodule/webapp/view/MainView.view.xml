@@ -18,7 +18,7 @@
       <!-- SCREENS RENDERING HERE -->
     </HBox>
 
-      <tnt:NavigationList id="navigationList" width="320px" selectedKey="Files">
+      <!-- <tnt:NavigationList id="navigationList" width="320px" selectedKey="Files">
         <tnt:items>
           <tnt:NavigationListItem id="myListItemHeader" text="myFiles" key="rootItem1" icon="sap-icon://document" items="{myNode>/}">
             <tnt:items>
@@ -26,7 +26,7 @@
             </tnt:items>
           </tnt:NavigationListItem>
         </tnt:items>
-      </tnt:NavigationList>
+      </tnt:NavigationList> -->
     </content>
   </Page>
 </mvc:View>
