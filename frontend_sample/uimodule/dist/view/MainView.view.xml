@@ -1,22 +1,44 @@
-<mvc:View controllerName="gitpg.myapp.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt">
+<mvc:View controllerName="gitpg.myapp.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:core="sap.ui.core">
+
   <Page id="page" title="{i18n>title}">
     <content>
-      
-      <Title level="H1" titleStyle='H1' textDirection='RTL' >
-        <Link text="Products Link" href="https://sap.com" target="_blank" />
+
+      <Title level="H1" titleStyle="H1" >
+        <Link id="link0" text="WEB" target="_blank" press='.onPress'/>
       </Title>
+  
+      <List width="320px"> 
+        <items>
+            <ActionListItem id="link1" text="1. create" press='.onPress'/>
+            <ActionListItem id="link2" text="2. css" press='.onPress'/>
+            <ActionListItem id="link3" text="3. filelist" press='.onPress'/>
+            <ActionListItem id="link4" text="4. html" press='.onPress'/>
+            <ActionListItem id="link5" text="5. javascript" press='.onPress'/>
+        </items>
+      </List>
 
-      <List width="320px">
-      <ActionListItem id="link1" text="1. create" press='.onPress'/>
-      <ActionListItem id="link2" text="2. css" press='.onPress'/>
-      <ActionListItem id="link3" text="3. filelist" press='.onPress'/>
-      <ActionListItem id="link4" text="4. html" press='.onPress'/>
-      <ActionListItem id="link5" text="5. javascript" press='.onPress'/>
-    </List>
+      <!-- 어그리게이션 바인딩 -->
+      <!-- 어그리게이션 바인딩 : 데이터와 화면 컨트롤의 어그리게이션을 엮는 것.
+           바인딩 : 데이터와 화면 사이를 엮는 것.
+                    -> 백엔드의 파일 리스트가 몇 개인지 알 수 없기 때문에 바인딩을 한다. -->
 
-    <HBox id="myExtend">
-      <!-- SCREENS RENDERING HERE -->
-    </HBox>
+
+      <!-- <List items = "{myData>/}"> -->
+      <!-- items 바인딩 -->
+
+      <!-- <List items = "{myDataa>/myArr1}">
+        <items> 
+          <ActionListItem id="link" text= "{myDataa>filename}_{myDataa>fileType}" /> 
+        </items>
+      </List> -->
+
+      <!-- <List items = "{myData>/}"> 
+          <ActionListItem id="Link" text="{myData>}" press=".onPress" />
+      </List> -->
+
+      <HBox id="myExtend">
+        <!-- 추가될 화면은 여기에 랜더링 -->
+      </HBox>
 
       <!-- <tnt:NavigationList id="navigationList" width="320px" selectedKey="Files">
         <tnt:items>
@@ -27,6 +49,7 @@
           </tnt:NavigationListItem>
         </tnt:items>
       </tnt:NavigationList> -->
+
     </content>
   </Page>
 </mvc:View>

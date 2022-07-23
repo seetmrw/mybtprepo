@@ -10,30 +10,79 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("gitpg.myapp.controller.MainView", {
+
+
+
       onInit: function () {
-        let oJson = new JSONModel();
-        this.getView().setModel(oJson, 'myNode');
-        oJson.loadData(
+        // let oJson = new JSONModel();
+        
+        //  인자(argument) 선언 필수.
+        //  배열 안에 각각 객체를 갖고 있는 형태
+        // { // 객체
+        // myArr1 : [ // 배열
+        // { filename : 'file1', fileType : 'xlsx' }, // 프로퍼티(property): '키(key):값(value)'
+        // { filename : 'file22', fileType : 'word' },
+        // { filename : 'file333', fileType : 'ppt' },
+        // { filename : 'file4444', fileType : 'txt' },
+        // { filename : 'file55555', fileType : 'xlsx' },
+        // { filename : 'file666666', fileType : 'ppt' },
+        // { filename : 'file7777777', fileType : 'ppt' },
+        // { filename : 'file88888888', fileType : 'xlsx' },
+        // { filename : 'file999999999', fileType : 'word' }
+        //     ], 
+        // myArr2 : [
+        // { filename : 'test1'},
+        // { filename : 'test22'},
+        // { filename : 'test333'},
+        // { filename : 'test4444'},
+        // { filename : 'test55555'},
+        // { filename : 'test666666'},
+        // { filename : 'test7777777'},
+        // { filename : 'test88888888'},
+        // { filename : 'test999999999'}
+        //     ]
+        //   } 
+        // );
+
+        // this.getView().setModel(oJson, 'myNode');
+        // oJson.loadData(
             'http://localhost:8921/files'
             //'https://port-8921-nodejs-billowy-sandwich-seetmrw287880.codeanyapp.com/files'
-        ).then(
-            function () {
-                //debugger;
-            }.bind(this)
-        )
-        
-        // $.ajax(
-        //   'http://localhost:8921/files',
-        //   //     'https://port-8921-nodejs-quaint-lizard-lgx0920328747.codeanyapp.com/files'
-        //   {
-        //     method: "GET",
-        //     success : function (...params) {
-        //         debugger;
-        //     }
-        //   }
+        // ).then(
+        //   function () {
+        //     debugger;
+        //   }.bind(this)
         // )
+
+        
+        // jquery
+        $.ajax(
+          'http://localhost:8921/files',            // http 요청을 보낼 서버 url (비동기)
+          // 'https://port-8921-nodejs-quaint-lizard-lgx0920328747.codeanyapp.com/files'
+          {
+            // 객체
+            method: "GET",
+            success : function (...params) {
+              let Success = JSON.parse(params[0]);  // parse:문자열을 원래 속성으로 되돌림.
+              
+              // myData
+              let oJson = new JSONModel(Success);
+
+              this.getView().setModel(oJson,'myData')  // JSONModel = UI5만의 객체, 저장, JSON 관리 용도
+              // -> oJson
+              //    oData: Array(3)
+              //    0: "test"
+              //    1: "ttt"
+              //    2: "ㅇㅅㅅ2"
+              debugger;
+            }.bind(this),
+            error : function (...params) {
+              debugger;
+            }
+          }
+        )
       },
-      onPress:function(oEvent){
+      onPress:function (oEvent) {
         let sIdRaiseEvent = oEvent.getSource().getId();
 
         let sIdLink0 = this.getView().byId('link0').getId();
@@ -43,8 +92,9 @@ sap.ui.define(
         let sIdLink4 = this.getView().byId('link4').getId();
         let sIdLink5 = this.getView().byId('link5').getId();
 
-        let pFragment ;
+        debugger;
 
+        let pFragment ;
 
         if (sIdRaiseEvent === sIdLink0) {
           pFragment = Fragment.load(
@@ -102,14 +152,15 @@ sap.ui.define(
           )
         }
 
-        pFragment.then(function (oView){
+        pFragment.then(function (oView) {
           let oMyExtend = this.getView().byId('myExtend');
-          
-          oMyExtend.destroyItems();               //Remove items in myExtend
-          oMyExtend.addItem(oView);               //Add item
 
+          oMyExtend.destroyItems(); // myExtend 내부 Item 밑에 다 지워버려
+          oMyExtend.addItem(oView); // Item 추가해
         }.bind(this));
+
       }
+
     });
   }
 );

@@ -16,6 +16,34 @@ sap.ui.define(
       onInit: function () {
         // let oJson = new JSONModel();
         
+        //  인자(argument) 선언 필수.
+        //  배열 안에 각각 객체를 갖고 있는 형태
+        // { // 객체
+        // myArr1 : [ // 배열
+        // { filename : 'file1', fileType : 'xlsx' }, // 프로퍼티(property): '키(key):값(value)'
+        // { filename : 'file22', fileType : 'word' },
+        // { filename : 'file333', fileType : 'ppt' },
+        // { filename : 'file4444', fileType : 'txt' },
+        // { filename : 'file55555', fileType : 'xlsx' },
+        // { filename : 'file666666', fileType : 'ppt' },
+        // { filename : 'file7777777', fileType : 'ppt' },
+        // { filename : 'file88888888', fileType : 'xlsx' },
+        // { filename : 'file999999999', fileType : 'word' }
+        //     ], 
+        // myArr2 : [
+        // { filename : 'test1'},
+        // { filename : 'test22'},
+        // { filename : 'test333'},
+        // { filename : 'test4444'},
+        // { filename : 'test55555'},
+        // { filename : 'test666666'},
+        // { filename : 'test7777777'},
+        // { filename : 'test88888888'},
+        // { filename : 'test999999999'}
+        //     ]
+        //   } 
+        // );
+
         // this.getView().setModel(oJson, 'myNode');
         // oJson.loadData(
             'http://localhost:8921/files'
@@ -26,19 +54,26 @@ sap.ui.define(
         //   }.bind(this)
         // )
 
+        
         // jquery
         $.ajax(
-          'http://localhost:8921/files',
+          'http://localhost:8921/files',            // http 요청을 보낼 서버 url (비동기)
+          // 'https://port-8921-nodejs-quaint-lizard-lgx0920328747.codeanyapp.com/files'
           {
+            // 객체
             method: "GET",
             success : function (...params) {
-              let Success = JSON.parse(params[0]);
+              let Success = JSON.parse(params[0]);  // parse:문자열을 원래 속성으로 되돌림.
               
               // myData
               let oJson = new JSONModel(Success);
 
-              this.getView().setModel(oJson,'myData')
-
+              this.getView().setModel(oJson,'myData')  // JSONModel = UI5만의 객체, 저장, JSON 관리 용도
+              // -> oJson
+              //    oData: Array(3)
+              //    0: "test"
+              //    1: "ttt"
+              //    2: "ㅇㅅㅅ2"
               debugger;
             }.bind(this),
             error : function (...params) {
@@ -50,14 +85,27 @@ sap.ui.define(
       onPress:function (oEvent) {
         let sIdRaiseEvent = oEvent.getSource().getId();
 
+        let sIdLink0 = this.getView().byId('link0').getId();
         let sIdLink1 = this.getView().byId('link1').getId();
         let sIdLink2 = this.getView().byId('link2').getId();
+        let sIdLink3 = this.getView().byId('link3').getId();
+        let sIdLink4 = this.getView().byId('link4').getId();
+        let sIdLink5 = this.getView().byId('link5').getId();
 
         debugger;
 
         let pFragment ;
 
-        if (sIdRaiseEvent === sIdLink1) {
+        if (sIdRaiseEvent === sIdLink0) {
+          pFragment = Fragment.load(
+            {
+              name : "gitpg.myapp.view.fragments.link0",
+              type : "XML",
+              id : "link0Fragment",
+              controller : this
+            }
+          )
+        } else if (sIdRaiseEvent === sIdLink1) {
           pFragment = Fragment.load(
             {
               name : "gitpg.myapp.view.fragments.link1",
@@ -66,7 +114,6 @@ sap.ui.define(
               controller : this
             }
           )
-
         } else if (sIdRaiseEvent === sIdLink2) {
           pFragment = Fragment.load(
             {
@@ -76,7 +123,33 @@ sap.ui.define(
               controller : this
             }
           )
-
+        } else if (sIdRaiseEvent === sIdLink3) {
+          pFragment = Fragment.load(
+            {
+              name : "gitpg.myapp.view.fragments.link3",
+              type : "XML",
+              id : "link3Fragment",
+              controller : this
+            }
+          )
+        } else if (sIdRaiseEvent === sIdLink4) {
+          pFragment = Fragment.load(
+            {
+              name : "gitpg.myapp.view.fragments.link4",
+              type : "XML",
+              id : "link4Fragment",
+              controller : this
+            }
+          )
+        } else if (sIdRaiseEvent === sIdLink5) {
+          pFragment = Fragment.load(
+            {
+              name : "gitpg.myapp.view.fragments.link5",
+              type : "XML",
+              id : "link5Fragment",
+              controller : this
+            }
+          )
         }
 
         pFragment.then(function (oView) {
